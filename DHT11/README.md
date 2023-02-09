@@ -11,6 +11,6 @@ O sensor DHT11 é um sensor capaz de medir umidade e temperatura, oferecendo um 
 	<li>Consumo de corrente: 0.5 à 2.5µA</li>
 	<li>Faixa de leitura de umidade: 20 à 90% (±5%) RH</li>
 	<li>Faixa de leitura de temperatura: 0° à 50° (±2°) C</li>
-	<li>Saída: Digital;
+	<li>Saída: Digital</li>
 	<li>Dimensões 12x23.5x5.5mm</li>
 <ul>
