@@ -1,5 +1,5 @@
 # Sensor DHT11
-![myimage-alt-tag](https://bnz05pap001files.storage.live.com/y4mU3eoX_tDy79Aye5wkD-PeYiAYDzDxGjAuiWKzoV6usCktN_Tq8bUfw5kLTJ_6gsDOXUhSv5_4CSCasRsr184-u8UAsyz8P7DxLmZyylT1ZGgFJX4c4a54ZMncGwUro3R0L0hIrfctP1vp4n2wWJdSS_OBxB22392geMIgy0WU4kf6INAwcoYu3WLqrFsqwgrKPcg0QAkJ-q__D5mwwMVWQ?encodeFailures=1&width=799&height=577)
+![myimage-alt-tag](https://bnz05pap001files.storage.live.com/y4mM_SFC1KYE6DWwyfKx_28yeShfRhNym2DCy2dB6Odd6OsWW6PiaOyydnvM_mRzKj1DYc_2qV3HtMzlFkUnAOQwuTLOC5cxtHUEnPp56D3YLE2yRkAZDGq1IsgLWKXDpz2YNi7YgsyOnNzSO5STcp2kdxjKjtk1lQmKPf7AWiR7QzghTvTL0YMvM-0QwufFs2eN5XzMh_rLA0lJ1aYaCpYkA?encodeFailures=1&width=660&height=510)
 
 # Descrição do Sensor
 Sensor simples, mede temperatura, pressão
