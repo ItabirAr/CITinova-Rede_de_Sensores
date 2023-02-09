@@ -7,7 +7,10 @@ Sensor simples, mede temperatura, pressão
 <h1> Informações Técnicas </h1>
 	
 <ul>
-	<li>leitura analogico</li>
-	<li>Faixa de leitura 30°C- 90°C</li>
-	<li>...</li>
+	<li>Tensão de operação 3 à 5.5VDC</li>
+	<li>Consumo de corrente: 0.5 à 2.5µA</li>
+	<li>Faixa de leitura de umidade: 20 à 90% (±5%) RH</li>
+	<li>Faixa de leitura de temperatura: 0° à 50° (±2°) C</li>
+	<li>Saída: Digital;
+	<li>Dimensões 12x23.5x5.5mm</li>
 <ul>
