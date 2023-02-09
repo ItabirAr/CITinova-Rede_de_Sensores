@@ -29,13 +29,14 @@ void loop()
   IndiceUV = indice(); //atribui o valor do Índice de Radiação UV
   
   //Impressão dos dados no Monitor Serial
-  Serial.print("Índice Ultravioleta: ");
+  Serial.print("Indice Ultravioleta: ");
   Serial.print(IndiceUV);
-  if (IndiceUV == 1 || IndiceUV == 2) { Serial.println(", Baixo"); }
-  else if (IndiceUV == 3 || IndiceUV == 4 || IndiceUV == 5) { Serial.println(", Moderado"); }
-  else if (IndiceUV == 6 || IndiceUV == 7) { Serial.println(", Alto"); }
-  else if (IndiceUV == 8 || IndiceUV == 9 || IndiceUV == 10)  { Serial.println(", Altíssimo"); }
-  else if (IndiceUV == 11) { Serial.println(", Extremo"); }
+  if (IndiceUV == 1 || IndiceUV == 2) { Serial.print(", Baixo"); }
+  else if (IndiceUV == 3 || IndiceUV == 4 || IndiceUV == 5) { Serial.print(", Moderado"); }
+  else if (IndiceUV == 6 || IndiceUV == 7) { Serial.print(", Alto"); }
+  else if (IndiceUV == 8 || IndiceUV == 9 || IndiceUV == 10)  { Serial.print(", Altíssimo"); }
+  else if (IndiceUV == 11) { Serial.print(", Extremo"); }
+  Serial.print("");
 
   delay(1000); //intervalo de 1 segundo
 }
