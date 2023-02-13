@@ -1,10 +1,32 @@
 # Sensor UVM-30A
-![myimage-alt-tag](https://bnz05pap001files.storage.live.com/y4mM_SFC1KYE6DWwyfKx_28yeShfRhNym2DCy2dB6Odd6OsWW6PiaOyydnvM_mRzKj1DYc_2qV3HtMzlFkUnAOQwuTLOC5cxtHUEnPp56D3YLE2yRkAZDGq1IsgLWKXDpz2YNi7YgsyOnNzSO5STcp2kdxjKjtk1lQmKPf7AWiR7QzghTvTL0YMvM-0QwufFs2eN5XzMh_rLA0lJ1aYaCpYkA?encodeFailures=1&width=660&height=510)
 
-# Descrição do Sensor
-Sensor UVM-30A é um sensor com a capacidade de detectar radiação UV Ultravioleta, sendo capaz de diferenciar-los em 10 intensidades diferentes.
+O sensor UVM30A é utilizado para medir a intensidade de radiação ultravioleta. O codigo disponivel esta normalizado para ter como resultado a intensidade UV de acordo com o index UV, padrão internacional de medida da intensidade UV.
 
-<h1> Informações Técnicas </h1>
+<div align="center">
+<img src="https://bnz05pap001files.storage.live.com/y4mM_SFC1KYE6DWwyfKx_28yeShfRhNym2DCy2dB6Odd6OsWW6PiaOyydnvM_mRzKj1DYc_2qV3HtMzlFkUnAOQwuTLOC5cxtHUEnPp56D3YLE2yRkAZDGq1IsgLWKXDpz2YNi7YgsyOnNzSO5STcp2kdxjKjtk1lQmKPf7AWiR7QzghTvTL0YMvM-0QwufFs2eN5XzMh_rLA0lJ1aYaCpYkA?encodeFailures=1&width=660&height=510" width="500" />
+</div>
+
+
+## Descrição do Sensor
+O funcionamento interno do módulo UVM30A é baseado em um fotodiodo, que é o componente responsável por converter a radiação Ultra Violeta em corrente elétrica. A luz UV incide no fotodiodo, causando a liberação de elétrons e a criação de portadores de carga geram uma corrente elétrica proporcional à intensidade da radiação UV.
+A corrente gerada pelo fotodiodo é amplificada por um circuito amplificador operacional e processado por um circuito de compensação de temperatura, que corrige as variações da sensibilidade do fotodiodo com a temperatura. O circuito completo é encapsulado em uma caixa para protegê-lo contra a radiação UV e outros ambientes adversos.
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/82607547/218459628-9e18b0e6-7827-48b4-ab89-6963bbfb72ec.png" width="700" />
+</div>
+
+O UVM30A mede a intensidade de incidência dos raios ultravioletas e é fabricado pela EKT.
+Através da porta analógica, o sensor é alimentado com uma tensão de operação e no terceiro terminal, sai uma tensão proporcional à incidência de luz UV.     A radiação ultravioleta (UV) é entendida como toda a radiação eletromagnética com comprimento de onda entre 200 e 400 nanômetros (nm), sendo assim o sensor emite um sinal elétrico que varia com a intensidade UV, ou seja, de acordo com o comprimento da onda.
+
+
+## Documentação
+
+O datasheet contendo a documentação do sensor UVM-30a pode ser encontrada no seguinte link: <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiF_NSPxJL9AhWvIbkGHRMBDIQQFnoECAoQAQ&url=https%3A%2F%2Fcurtocircuito.com.br%2Fdatasheet%2Fsensor%2Fraios_ultravioleta.pdf&usg=AOvVaw13F85oKQ5s5UMkdZlSiPun">Clique aqui</a>
+
+
+Este sensor não necessita de nenhuma biblioteca para seu funcionamento.
+
+## Informações Técnicas
 	
 <ul>
 	<li>Tensão de operação: 3 à 5VDC</li>
