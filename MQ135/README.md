@@ -3,7 +3,7 @@
 O sensor MQ135 será utilizado para medir a concentração de gás CO2. Este sensor é projetado especificamente para detectar gases poluentes, como dióxido de carbono, e fornecer uma leitura precisa da concentração de gás no ar. 
 
 <div align="center">
-<img src="https://github.com/ItabirAr/CITinova-ITABIRAR/issues/6#issue-1583246030" width="500" />
+<img src="https://user-images.githubusercontent.com/82607547/217625996-9c177883-c29c-4934-99b6-d2d57828031a.png" width="500" />
 </div>
 
 
