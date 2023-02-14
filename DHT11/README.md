@@ -1,5 +1,7 @@
 # Sensor DHT11
-![myimage-alt-tag](https://user-images.githubusercontent.com/69599494/218599939-01fc1a74-8f1f-4dab-b46d-b4ef3195432f.png)
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/218608958-618bacde-2512-453f-8fd6-229def22059c.png"500" />
+</div>
 
 # Descrição do Sensor
 O sensor DHT11 é um sensor capaz de medir umidade e temperatura, oferecendo um ótimo custo e benefício. Ideal para ser utilizado em projetos de pequeno porte. 
