@@ -1,7 +1,12 @@
 # Sensor BMP180
+<<<<<<< HEAD
 <div align="center">
 <img src="https://user-images.githubusercontent.com/69599494/218602613-a81b8dfa-1378-4e88-936e-6c92e9419689.png" width="500" />
 </div>
+=======
+![myimage-alt-tag](https://user-images.githubusercontent.com/69599494/218602613-a81b8dfa-1378-4e88-936e-6c92e9419689.png)
+
+>>>>>>> 154ad8f6cafde22030e5232c7b80e4a72de51c3b
 # Descrição do Sensor
 Sensor de temperatura e pressão, compacto e de baixo consumo de corrente. Sendo ideal para o uso com pilhas e baterias.
 
