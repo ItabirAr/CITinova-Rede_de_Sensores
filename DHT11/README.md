@@ -13,8 +13,8 @@ Um termistor é um dispositivo elétrico cuja resistência elétrica altera dras
 <img src="https://user-images.githubusercontent.com/69599494/218611038-4041b281-14b8-4462-88db-a04b3ad94575.png" width="700" />
 </div>
 
-O UVM30A mede a intensidade de incidência dos raios ultravioletas e é fabricado pela EKT.
-Através da porta analógica, o sensor é alimentado com uma tensão de operação e no terceiro terminal, sai uma tensão proporcional à incidência de luz UV.     A radiação ultravioleta (UV) é entendida como toda a radiação eletromagnética com comprimento de onda entre 200 e 400 nanômetros (nm), sendo assim o sensor emite um sinal elétrico que varia com a intensidade UV, ou seja, de acordo com o comprimento da onda.
+O DH11 realiza medições de temperatura (°C) e umidade relativa do ar (%UR). Os principais fabricantes são a  UNIVERSAL-SOLDER Electronics Ltd  e a  Guangzhou Aosong Electronics Co Ltd . O sensor deve ser alimentado por fonte de tensão entre 3,0V e 5,5V.
+O DTH11 transmite dados por comunicação serial Single-Wire Two-Way, o sensor possui conversor análogo digital interno de 16 bits. Após o microcontrolador enviar um sinal de inicialização, o sensor entra em modo de execução. É transmitido um sinal de 40 bits para o Arduino, em pacotes de 8 bits: o byte. Os primeiros 4 bytes são as informações de umidade e temperatura. O último byte trata-se da soma dos 32 dígitos anteriores, para verificação de autenticidade dos dados. Em seguida, o sensor entra em modo de baixo consumo e aguarda um novo sinal do Arduino.
 
 
 ## Documentação
