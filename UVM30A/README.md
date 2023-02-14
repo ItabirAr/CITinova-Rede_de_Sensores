@@ -3,7 +3,7 @@
 O sensor UVM30A é utilizado para medir a intensidade de radiação ultravioleta. O codigo disponivel esta normalizado para ter como resultado a intensidade UV de acordo com o index UV, padrão internacional de medida da intensidade UV.
 
 <div align="center">
-<img src="https://bnz05pap001files.storage.live.com/y4mM_SFC1KYE6DWwyfKx_28yeShfRhNym2DCy2dB6Odd6OsWW6PiaOyydnvM_mRzKj1DYc_2qV3HtMzlFkUnAOQwuTLOC5cxtHUEnPp56D3YLE2yRkAZDGq1IsgLWKXDpz2YNi7YgsyOnNzSO5STcp2kdxjKjtk1lQmKPf7AWiR7QzghTvTL0YMvM-0QwufFs2eN5XzMh_rLA0lJ1aYaCpYkA?encodeFailures=1&width=660&height=510" width="500" />
+<img src="https://user-images.githubusercontent.com/69599494/218610262-5fec66a0-9e2b-43c5-857a-268540001a97.png" width="500" />
 </div>
 
 
