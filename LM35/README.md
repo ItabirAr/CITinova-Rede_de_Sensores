@@ -1,14 +1,9 @@
 # Sensor LM35
 
 O LM35 é um sensor de temperatura linear de baixo custo, que fornece uma saída de tensão proporcional à temperatura. Ele é amplamente utilizado em sistemas de controle de temperatura devido à sua facilidade de uso e precisão.
-
-
-
 <div align="center">
-<img src="https://bnz05pap001files.storage.live.com/y4mLE584eGcRCI3zXRpEhDpk7uNBdLeljPp0gCK6rwvzv6kLwgma45a5sHJLsIdL26o7VcVOGiwxIL6GodX5WS_JYqs-EoRoA0byFObO3zzFSvKCgoTWX9zdvifGSWXrABXfm7Z0tNN-5y-DFBteFaPk525pU-uBYveOOW8vPjNqSQ2t6nQal_34R6xGQlK_L2VQq_R1DC69zvm5TSOtknEww?encodeFailures=1&width=681&height=551" width="500" />
+<img src="https://user-images.githubusercontent.com/69599494/218610105-95684180-fe02-4e38-80ff-034cd8dee842.png" width="500" />
 </div>
-
-
 
 ## Descrição do Sensor
 O LM35 é composto por um elemento termoelétrico, geralmente feito de silício, protegido por uma caixa metálica, que também funciona como um terminal de referência para a medição de tensão. Usa o princípio básico de um diodo, onde à medida que a temperatura aumenta em comparação com a temperatura de referência, a tensão através de um diodo aumenta a uma taxa conhecida (10mV/°C). Ao amplificar precisamente a mudança de tensão, gera um sinal analógico diretamente proporcional à diferença de temperatura.
