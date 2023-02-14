@@ -1,6 +1,7 @@
 # Sensor DHT11
+
 <div align="center">
-<img src="https://user-images.githubusercontent.com/69599494/218608958-618bacde-2512-453f-8fd6-229def22059c.png"500" />
+<img src="https://user-images.githubusercontent.com/69599494/218608958-618bacde-2512-453f-8fd6-229def22059c.png" width="500" />
 </div>
 
 # Descrição do Sensor
