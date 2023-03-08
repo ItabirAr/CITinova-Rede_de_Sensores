@@ -2,7 +2,6 @@
 #include <SD.h> // Biblioteca para comunicação com cartão SD
 #include <Adafruit_BMP085.h> //biblioteca do sensor BMP180
 
-
 File dataFile; // Objeto que representa o arquivo de dados
 const int chipSelect = 10; // Pino para seleção do cartão SD
 String filename = "bmp.txt";; // Nome do arquivo
@@ -64,16 +63,9 @@ bufferIndex++;
 // Salva dados no cartão SD quando o buffer estiver cheio
 if (bufferIndex == bufferSize) {
   saveData();
-  bufferIndex = 0;
-}
-
-// Atualiza último momento de leitura dos sensores
-lastReadTime = currentTime;
-}
-}
-
-void saveData() {
-// Obtém momento atual
+  
+  
+  // Obtém momento atual
 unsigned long currentTime = millis();
 
 // Verifica se já passaram 10 segundos desde o último salvamento de dados
@@ -99,4 +91,18 @@ dataFile.close();
 
          Serial.println(dataString);
 Serial.println("Dados salvos.");
+  
+  
+  
+  
+  bufferIndex = 0;
+}
+
+// Atualiza último momento de leitura dos sensores
+lastReadTime = currentTime;
+}
+}
+
+void saveData() {
+
 }
