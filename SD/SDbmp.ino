@@ -57,6 +57,7 @@ unsigned long currentTime = millis();
 // Realiza leitura dos sensores a cada 1 segundo
 if (currentTime - lastReadTime >= 1000) {
 Temperatura[bufferSize] = bmp.readTemperature();
+       Serial.println(Temperatura[bufferSize]);
 // Incrementa índice do buffer
 bufferIndex++;
 
@@ -96,6 +97,6 @@ dataFile = SD.open(filename, FILE_WRITE);
 dataFile.print(dataString);
 dataFile.close();
 
-Serial.println(dataString);
+         Serial.println(dataString);
 Serial.println("Dados salvos.");
 }
