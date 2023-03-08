@@ -1,47 +1,37 @@
-// Biblioteca para comunicação com cartão SD
-#include <SD.h>
+
+#include <SD.h> // Biblioteca para comunicação com cartão SD
 #include <Adafruit_BMP085.h> //biblioteca do sensor BMP180
 
-// Objeto que representa o arquivo de dados
-File dataFile;
-// Pino para seleção do cartão SD
-const int chipSelect = 10;
-// Tamanho do buffer de dados
-const int bufferSize = 10;
-// Índice atual do buffer
-int bufferIndex = 0;
+
+File dataFile; // Objeto que representa o arquivo de dados
+const int chipSelect = 10; // Pino para seleção do cartão SD
+String filename = "bmp.txt";; // Nome do arquivo
 
 // Buffers para armazenamento de dados
+const int bufferSize = 10; // Tamanho do buffer de dados
+int bufferIndex = 0; // Índice atual do buffer
 Adafruit_BMP085 bmp; //define bmp como objeto do tipo Adafruit_BMP085
 float Temperatura[bufferSize]; //variável auxiliar com valores fracionados
 
-// Último momento em que os dados foram salvos no cartão SD
-unsigned long lastSaveTime = 0;
-// Último momento em que os sensores foram lidos
-unsigned long lastReadTime = 0;
+unsigned long lastSaveTime = 0; // Último momento em que os dados foram salvos no cartão SD
+unsigned long lastReadTime = 0; // Último momento em que os sensores foram lidos
 
 
 void setup() {
-// Inicia comunicação serial com taxa de 9600 bps
-Serial.begin(9600);
-
+Serial.begin(9600); // Inicia comunicação serial com taxa de 9600 bps
 //inicialização do Sensor
-  if (!bmp.begin()) { // se o sensor não for inicializado, apresenta no monitor serial a mensagem:
-    Serial.println("Sensor BMP180 não foi identificado! Verifique as conexões.");
-    while (1) {} //em loop até o sensor inicializar
-  }  
-  
+if (!bmp.begin()) { // se o sensor não for inicializado, apresenta no monitor serial a mensagem:
+  Serial.println("Sensor BMP180 não foi identificado! Verifique as conexões.");
+  while (1) {} //em loop até o sensor inicializar
+}  
 // Configura pino de seleção do cartão SD como saída
 pinMode(chipSelect, OUTPUT);
-
 // Inicializa cartão SD
 if (!SD.begin(chipSelect)) {
 Serial.println("Erro ao inicializar o cartão SD.");
 return;
 }
-
 // Cria arquivo de dados se ele não existir
-String filename = "bmp.txt";
 if (!SD.exists(filename)) {
 dataFile = SD.open(filename, FILE_WRITE);
 dataFile.println("Time , Temperature");
@@ -50,7 +40,6 @@ dataFile.close();
 
 // Inicializa variável de último momento de salvamento de dados
 lastSaveTime = millis();
-
 // Inicializa buffers de dados com valor 0
 for (int i = 0; i < bufferSize; i++) {
 Temperatura[bufferSize] = 0;
@@ -60,6 +49,7 @@ Temperatura[bufferSize] = 0;
 Serial.println("Programa iniciado.");
 }
 
+
 void loop() {
 // Obtém momento atual
 unsigned long currentTime = millis();
@@ -67,7 +57,6 @@ unsigned long currentTime = millis();
 // Realiza leitura dos sensores a cada 1 segundo
 if (currentTime - lastReadTime >= 1000) {
 Temperatura[bufferSize] = bmp.readTemperature();
-
 // Incrementa índice do buffer
 bufferIndex++;
 
@@ -107,5 +96,6 @@ dataFile = SD.open(filename, FILE_WRITE);
 dataFile.print(dataString);
 dataFile.close();
 
+Serial.println(dataString);
 Serial.println("Dados salvos.");
 }
