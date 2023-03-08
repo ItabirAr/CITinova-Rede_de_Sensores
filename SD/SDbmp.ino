@@ -11,16 +11,15 @@ const int bufferSize = 10;
 // Índice atual do buffer
 int bufferIndex = 0;
 
-
 // Buffers para armazenamento de dados
 Adafruit_BMP085 bmp; //define bmp como objeto do tipo Adafruit_BMP085
 float Temperatura[bufferSize]; //variável auxiliar com valores fracionados
 
 // Último momento em que os dados foram salvos no cartão SD
 unsigned long lastSaveTime = 0;
-
 // Último momento em que os sensores foram lidos
 unsigned long lastReadTime = 0;
+
 
 void setup() {
 // Inicia comunicação serial com taxa de 9600 bps
@@ -42,7 +41,7 @@ return;
 }
 
 // Cria arquivo de dados se ele não existir
-String filename = "/data.csv";
+String filename = "bmp.txt";
 if (!SD.exists(filename)) {
 dataFile = SD.open(filename, FILE_WRITE);
 dataFile.println("Time , Temperature");
@@ -104,7 +103,7 @@ dataString += String(Temperatura[i]) + "\n";
 }
 
 // Abre o arquivo para escrita e escreve os dados
-dataFile = SD.open("/data.csv", FILE_WRITE);
+dataFile = SD.open(filename, FILE_WRITE);
 dataFile.print(dataString);
 dataFile.close();
 
