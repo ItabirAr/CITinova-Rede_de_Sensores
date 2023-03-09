@@ -38,7 +38,7 @@ void setup() {
   
   // Inicializa buffers de dados com valor 0
   for (int i = 0; i < bufferSize; i++) {
-    Temperatura[bufferSize] = 0;
+    Temperatura[i] = 0;
   }
   
   Serial.println("Programa iniciado."); // Imprime mensagem de início do programa
@@ -50,7 +50,7 @@ void loop() {
 
   // Realiza leitura dos sensores a cada 1 segundo
   if (currentTime - lastReadTime >= 1000) {
-    Temperatura[bufferSize] = bmp.readTemperature();
+    Temperatura[bufferIndex] = bmp.readTemperature();
     bufferIndex++; // Incrementa índice do buffer
 
     // Salva dados no cartão SD quando o buffer estiver cheio
