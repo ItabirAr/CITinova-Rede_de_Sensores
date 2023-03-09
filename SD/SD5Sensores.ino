@@ -31,7 +31,7 @@ int bufferUltravioletaUVM[bufferSize];   // declara um vetor para a resposta do 
 DHT dht(pinoDHT, modeloDHT); // define dht como objeto do tipo DHT
 float bufferTemperaturaDHT[bufferSize]; // vetor para os dados lidos de temperatura
 float bufferUmidadeDHT[bufferSize]; // vetor para os dados lidos de umidade
-// GY30 **  (5V) SDA, SLC
+// GY30 (5V) SDA, SLC
 BH1750 gy; // define gy como objeto do tipo BH1750
 float bufferIluminanciaGY[bufferSize]; // vetor para os dados lidos de iluminãncia (intensidade luminosa por área) 
 
@@ -52,7 +52,7 @@ void setup() {
   // Inicialização do GY30
   gy.begin(); //inicializa o sensor GY30
   // Testa se os sensores DHT11 e GY30 estão recebendo dados numéricos
-  testeDHT_GY()
+  testeDHT_GY();
   // Configura pino de seleção do cartão SD como saída
   pinMode(chipSelect, OUTPUT);
   // Inicializa cartão SD
