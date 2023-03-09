@@ -107,6 +107,7 @@ void loop() {
 
   // Realiza leitura dos sensores a cada 1 segundo
   if (currentTime - lastReadTime >= 1000) {
+    DateTime now = rtc.now(); // obtém a data e hora atual do RTC, armazena na variável now a data e hora atuais em um objeto DateTime do Arduino
     bufferData[bufferIndex] = rtcData();
     bufferHora[bufferIndex] = rtcHora();
     bufferTemperaturaBMP[bufferIndex] = bmp.readTemperature(); // temperatura informada pelo sensor
@@ -134,7 +135,7 @@ void loop() {
 // Função para Data
 String rtcData() {
   String data = "";
-  dataString += String(now.year(), DEC) + "/";
+  dataString += String(now.year(), DEC) + "/"; // DEC especifica que o valor deve ser convertido para decimal
   dataString += String(now.month(), DEC) + "/";
   dataString += String(now.day(), DEC);
   return data;
