@@ -2,7 +2,7 @@
 
 File dataFile; // Objeto que representa o arquivo de dados
 const int chipSelect = 10; // Pino para seleção do cartão SD
-String filename = "/data.csv";
+String fileName = "/data.csv";
 
 const int bufferSize = 10; // Tamanho do buffer de dados
 int bufferIndex = 0; // Índice atual do buffer
@@ -26,8 +26,8 @@ void setup() {
   }
 
   // Cria arquivo de dados se ele não existir
-  if (!SD.exists(filename)) {
-    dataFile = SD.open(filename, FILE_WRITE);
+  if (!SD.exists(fileName)) {
+    dataFile = SD.open(fileName, FILE_WRITE);
     dataFile.println("Time,Temperature,Humidity,PM2.5,PM10");
     dataFile.close();
   }
@@ -106,7 +106,7 @@ void saveData() {
   }
 
   // Abre o arquivo para escrita e escreve os dados
-  dataFile = SD.open("/data.csv", FILE_WRITE);
+  dataFile = SD.open(fileName, FILE_WRITE);
   dataFile.print(dataString);
   dataFile.close();
 
