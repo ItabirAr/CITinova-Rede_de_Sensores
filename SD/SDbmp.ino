@@ -55,7 +55,7 @@ void loop() {
 
     // Salva dados no cartão SD quando o buffer estiver cheio
     if (bufferIndex == bufferSize) {
-      saveData(Temperatura[bufferSize]);  
+      saveData();  
       bufferIndex = 0;
     }
 
@@ -66,7 +66,7 @@ void loop() {
 
 
 
-void saveData(float Temperatura[10]) {
+void saveData() {
   // Obtém momento atual
   unsigned long currentTime = millis();
 
@@ -87,6 +87,7 @@ void saveData(float Temperatura[10]) {
 
   // Abre o arquivo para escrita e escreve os dados
   dataFile = SD.open("/data.csv", FILE_WRITE);
+    Serial.println(dataString);
   dataFile.print(dataString);
   dataFile.close();
 
