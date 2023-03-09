@@ -27,6 +27,10 @@ void setup() {
     Serial.println("Erro ao inicializar o cartão SD.");
     return;
   }
+  // Deleta um arquivo de mesmo nome caso já exista
+  if(SD.exists(filename)) {
+    SD.remove(filename);
+  }
   // Cria arquivo de dados se ele não existir
   if (!SD.exists(filename)) {
     dataFile = SD.open(filename, FILE_WRITE);
