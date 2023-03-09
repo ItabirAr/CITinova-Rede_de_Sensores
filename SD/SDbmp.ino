@@ -87,7 +87,6 @@ void saveData() {
 
   // Abre o arquivo para escrita e escreve os dados
   dataFile = SD.open(filename, FILE_WRITE);
-    Serial.println(dataString);
   dataFile.print(dataString);
   dataFile.close();
 
