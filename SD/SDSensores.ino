@@ -150,14 +150,14 @@ int medicaoUVM(){
 
 
 void testeDHT_GY() {
-  float TemperaturaDHT = dht.readTemperature();  // temperatura informada pelo sensor
-  float UmidadeDHT = dht.readHumidity(); // umidade informada pelo sensor
-  if (isnan(TemperaturaDHT) || isnan(UmidadeDHT)) { 
+  float temperaturaDHT = dht.readTemperature();  // temperatura informada pelo sensor
+  float umidadeDHT = dht.readHumidity(); // umidade informada pelo sensor
+  if (isnan(temperaturaDHT) || isnan(umidadeDHT)) { 
     //se a for atribuido um valor não numérico, indica erro de leitura no DHT11
     Serial.println("Falha de leitura do DHT11! Verifique as conexões.");
   }
-  float IluminanciaGY = gy.readLightLevel(); // iluminância informada pelo sensor
-  if (isnan(IluminanciaGY)) { 
+  float iluminanciaGY = gy.readLightLevel(); // iluminância informada pelo sensor
+  if (isnan(iluminanciaGY)) { 
     //se a for atribuido um valor não numérico, indica erro de leitura no GY30
     Serial.println("Falha de leitura do GY30! Verifique as conexões.");
   }
