@@ -5,7 +5,7 @@ File dataFile; // Objeto que representa o arquivo de dados
 const int chipSelect = 10; // Pino para seleção do cartão SD
 unsigned long lastSaveTime = 0; // Último momento em que os dados foram salvos no cartão SD
 unsigned long lastReadTime = 0; // Último momento em que os sensores foram lidos
-String filename = "bmp.txt";; // Nome do arquivo
+String fileName = "bmp.txt";; // Nome do arquivo
 
 // Buffers para armazenamento de dados
 int bufferIndex = 0; // Índice atual do buffer
@@ -28,12 +28,12 @@ void setup() {
     return;
   }
   // Deleta um arquivo de mesmo nome caso já exista
-  if(SD.exists(filename)) {
-    SD.remove(filename);
+  if(SD.exists(fileName)) {
+    SD.remove(fileName);
   }
   // Cria arquivo de dados se ele não existir
-  if (!SD.exists(filename)) {
-    dataFile = SD.open(filename, FILE_WRITE);
+  if (!SD.exists(fileName)) {
+    dataFile = SD.open(fileName, FILE_WRITE);
     dataFile.println("Time , Temperature");
     dataFile.close();
   }
@@ -90,7 +90,7 @@ void saveData() {
   }
 
   // Abre o arquivo para escrita e escreve os dados
-  dataFile = SD.open(filename, FILE_WRITE);
+  dataFile = SD.open(fileName, FILE_WRITE);
   dataFile.print(dataString);
   dataFile.close();
 
