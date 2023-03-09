@@ -1,43 +1,44 @@
-// Integração dos sensores BMP180, MQ135, LM35, UVM30A, DHT11, GY30
+// Integração dos sensores BMP180, MQ135, LM35, UVM30A, DHT11, GY30 com interrupção
 #include <TimerOne.h> //biblioteca do temporizador interno do arduino
 #include <Adafruit_BMP085.h> //biblioteca do sensor BMP180
 #include <MQ135.h> //biblioteca do sensor MQ135
 #include <DHT.h> //biblioteca do sensor DHT11
+#include <Wire.h> //bibilioteca de comunicação entre dispositivos por protocolo I2C
 #include <BH1750.h> //biblioteca do sensor GY30
 
-int p = 0;            // variável auxiliar de posição dos vetores
-bool flag = false;    // variável auxiliar para indicar a contagem de tempo
-long bufferTempo[10]; // vetor com os dados de tempo
+int p = 0; // variável auxiliar de posição dos vetores
+bool flag = false; // variável auxiliar para indicar a contagem de tempo
+const int tamanhoBuffer = 10; // tamanho do vetor
+long bufferTempo[tamanhoBuffer]; // vetor com os dados de tempo
 
 // ** VARIAVEIS BMP180 ** (3,3V) SDA-A4, SCL-A5
 Adafruit_BMP085 bmp; // define bmp como objeto do tipo Adafruit_BMP085 (I2C)
-float bufferTemperaturaBMP[10]; // vetor para os dados lidos de temperatura
-int bufferPressaoBMP[10]; // vetor para os dados lidos de pressão
+float bufferTemperaturaBMP[tamanhoBuffer]; // vetor para os dados lidos de temperatura
+int bufferPressaoBMP[tamanhoBuffer]; // vetor para os dados lidos de pressão
 
 // ** VARIAVEIS MQ135 ** (5V) A0 
 #define pinoMQ A0
 MQ135 mq = MQ135(pinoMQ);
-float bufferCo2MQ[10]; // vetor para os dados lidos de CO2
+float bufferCo2MQ[tamanhoBuffer]; // vetor para os dados lidos de CO2
 
 // ** VARIAVEIS LM35 ** (5V) A2
 #define pinoLM A2
-float bufferTemperaturaLM[10];  //declara um vetor para resposta do sensor
+float bufferTemperaturaLM[tamanhoBuffer];  //declara um vetor para resposta do sensor
 
 // ** VARIAVEIS UVM30A ** (3,3V ou 5V) A1
 #define pinoUVM A1
-float leituraSensorUVM;  // nível de tensão de saída do sensor lido no arduíno
-int bufferUltravioletaUVM[10];   // declara um vetor para a resposta do sensor
+int bufferUltravioletaUVM[tamanhoBuffer];   // declara um vetor para a resposta do sensor
 
 // ** VARIAVEIS DHT11 ** (3,3V ou 5V) A3
 #define pinoDHT A3 // pino usado para conexão
 #define modeloDHT DHT11 // modelo do sensor
 DHT dht(pinoDHT, modeloDHT); // define dht como objeto do tipo DHT
-float bufferTemperaturaDHT[10]; // vetor para os dados lidos de temperatura
-float bufferUmidadeDHT[10]; // vetor para os dados lidos de umidade
+float bufferTemperaturaDHT[tamanhoBuffer]; // vetor para os dados lidos de temperatura
+float bufferUmidadeDHT[tamanhoBuffer]; // vetor para os dados lidos de umidade
 
 // ** VARIAVEIS GY30 ** (3,3V ou 5V) SDA, SLC
 BH1750 gy; // define gy como objeto do tipo BH1750
-float bufferIluminanciaGY[10]; // vetor para os dados lidos de iluminãncia (intensidade luminosa por área) 
+float bufferIluminanciaGY[tamanhoBuffer]; // vetor para os dados lidos de iluminãncia (intensidade luminosa por área) 
 
 void setup() {
 // inicializa monitor serial
@@ -52,27 +53,10 @@ void setup() {
 // ** INICIALIZA GY30 **
   gy.begin(); //inicializa o sensor GY30
 // temporizador interno do arduino
-  Timer1.initialize(1000000);
+  Timer1.initialize(1000000); // 1s
   Timer1.attachInterrupt(callback);
-
-// *** variáveis medidas e unidades
-  Serial.print("Tempo[ms]");
-  Serial.print("\t");
-  Serial.print("Temp_BMP180[°C]");
-  Serial.print("\t");
-  Serial.print("Pressao_BMP180[Pa]");
-  Serial.print("\t");
-  Serial.print("Conc.CO2_MQ135[ppm]");
-  Serial.print("\t");
-  Serial.print("Temp_LM35[°C]");
-  Serial.print("\t");
-  Serial.print("IndiceUV_UVM30A");
-  Serial.print("\t");
-  Serial.print("Temp_DHT11[°C]");
-  Serial.print("\t");
-  Serial.print("UmidadeRel._DHT11[%UR]");
-  Serial.print("\t");
-  Serial.println("Iluminância_GY30[lux]"); // lux = lm/m²
+// *** variáveis medidas e unidades (lux = lm/m²)
+  Serial.println("Tempo[ms], Temp_BMP180[°C], Pressao[Pa], Conc.CO2_MQ135[ppm], Temp_LM35[°C], IndiceUV, Temp_DHT11[°C], UmidadeRelelativa[%UR], Iluminância[lux]");
 }
 
 
@@ -98,7 +82,7 @@ void medicaoTemperaturaLM(){
 
 // ** FUNÇÃO UVM30A **
 int medicaoUVM(){
-  leituraSensorUVM = analogRead(pinoUVM); // atribui a respota do sensor a uma variavel
+  float leituraSensorUVM = analogRead(pinoUVM); // atribui o nível de tensão na saída do sensor a uma variavel
   if (leituraSensorUVM >= 0 && leituraSensorUVM < 50) {
     return 0;
   } else if (leituraSensorUVM >= 50 && leituraSensorUVM < 227) {
@@ -126,14 +110,12 @@ int medicaoUVM(){
   }
 }
 
-// ** FUNÇÃO DHT11 **
-void medicaoDHT() 
-{ // o sensor possui atraso de até 2s
+// ** FUNÇÃO DHT11 ** (o sensor possui atraso de até 2s)
+void medicaoDHT() {
   bufferTemperaturaDHT[p] = dht.readTemperature();  // temperatura informada pelo sensor
   bufferUmidadeDHT[p] = dht.readHumidity(); // umidade informada pelo sensor
-  
-  if (isnan(bufferTemperaturaDHT[p]) || isnan(bufferUmidadeDHT[p])) 
-  { //se a for atribuido um valor não numérico, indica erro de leitura no DHT11
+  //se a for atribuido um valor não numérico, indica erro de leitura no DHT11
+  if (isnan(bufferTemperaturaDHT[p]) || isnan(bufferUmidadeDHT[p])) { 
     Serial.println("Falha de leitura do DHT11");
   } 
 }
@@ -141,12 +123,13 @@ void medicaoDHT()
 // ** FUNÇÃO GY30 **
 void medicaoGY(){
   bufferIluminanciaGY[p] = gy.readLightLevel(); // iluminância informada pelo sensor
-
-  if (isnan(bufferIluminanciaGY[p])) 
-  { //se a for atribuido um valor não numérico, indica erro de leitura no GY30
+  //se a for atribuido um valor não numérico, indica erro de leitura no GY30
+  if (isnan(bufferIluminanciaGY[p])) { 
     Serial.println("Falha de leitura do GY30");
   } 
 }
+
+
 
 void loop(){   
   if(flag){
@@ -158,7 +141,7 @@ void loop(){
     medicaoDHT();
     medicaoGY();
     p++;
-    if (p > 9) {
+    if (p == tamanhoBuffer-1) {
       monitorSerial(); // função que mostra os dados salvos nos vetores
       p = 0; // retorna à posição inicial dos vetores para salvar novos dados
     }
@@ -168,30 +151,30 @@ void loop(){
 
 
 void monitorSerial() { // função para imprimir  os resultados obtidos
-  for(int j = 0; j < 10; j++) {
+  for(int j = 0; j < tamanhoBuffer; j++) {
     //Tempo
     Serial.print(bufferTempo[j]);
     //BMP180
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.print(bufferTemperaturaBMP[j]);
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.print(bufferPressaoBMP[j]);
     //MQ135
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.print(bufferCo2MQ[j]);
     //LM35
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.print(bufferTemperaturaLM[j]);
     //UVM3OA
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.print(bufferUltravioletaUVM[j]);
     //DHT11
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.print(bufferTemperaturaDHT[j]);
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.print(bufferUmidadeDHT[j]);
     //GY30
-    Serial.print("\t");
+    Serial.print(", ");
     Serial.println(bufferIluminanciaGY[j]);
   }
 }
