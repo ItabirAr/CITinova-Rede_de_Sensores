@@ -6,8 +6,8 @@
 #include <Wire.h> //bibilioteca de comunicação entre dispositivos por protocolo I2C
 #include <BH1750.h> //biblioteca do sensor GY30
 
-int p = 0; // variável auxiliar de posição dos vetores
 bool flag = false; // variável auxiliar para indicar a contagem de tempo
+int p = 0; // variável auxiliar de posição dos vetores
 const int tamanhoBuffer = 10; // tamanho do vetor
 long bufferTempo[tamanhoBuffer]; // vetor com os dados de tempo
 
@@ -44,9 +44,11 @@ void setup() {
 // inicializa monitor serial
   Serial.begin(9600); 
 // ** INICIALIZA BMP180 **
-  if (!bmp.begin()) { // se o sensor não for inicializado, apresenta a mensagem:
+  if (!bmp.begin()) { 
+    //se o sensor não for inicializado, apresenta a mensagem:
     Serial.println("Sensor BMP180 não foi identificado! Verifique as conexões.");
-    while (1) {} // em loop (repetições) até o sensor inicializar
+    while (1) {  //em loop (repetições) até o sensor inicializar
+    } 
   }
 // ** INICIALIZA DHT11 **
   dht.begin(); //inicializa o sensor DHT11
@@ -59,10 +61,29 @@ void setup() {
   Serial.println("Tempo[ms], Temp_BMP180[°C], Pressao[Pa], Conc.CO2_MQ135[ppm], Temp_LM35[°C], IndiceUV, Temp_DHT11[°C], UmidadeRelelativa[%UR], Iluminância[lux]");
 }
 
-
 void callback(){
   flag = true;
 }
+
+void loop(){   
+  if(flag){
+    bufferTempo[p] = millis(); // milissegundos transcorridos desde que o Arduino foi ligado
+    medicaoBMP();
+    medicaoMQ();
+    medicaoTemperaturaLM();
+    bufferUltravioletaUVM[p] = medicaoUVM(); // atribui o valor do índice de radiação uv
+    medicaoDHT();
+    medicaoGY();
+    p++;
+    if (p == tamanhoBuffer-1) {
+      monitorSerial(); // função que mostra os dados salvos nos vetores
+      p = 0; // retorna à posição inicial dos vetores para salvar novos dados
+    }
+    flag = false;
+  }
+}
+
+
 
 // ** FUNÇÃO BMP180 **
 void medicaoBMP() {
@@ -129,27 +150,7 @@ void medicaoGY(){
   } 
 }
 
-
-
-void loop(){   
-  if(flag){
-    bufferTempo[p] = millis(); // milissegundos transcorridos desde que o Arduino foi ligado
-    medicaoBMP();
-    medicaoMQ();
-    medicaoTemperaturaLM();
-    bufferUltravioletaUVM[p] = medicaoUVM(); // atribui o valor do índice de radiação uv
-    medicaoDHT();
-    medicaoGY();
-    p++;
-    if (p == tamanhoBuffer-1) {
-      monitorSerial(); // função que mostra os dados salvos nos vetores
-      p = 0; // retorna à posição inicial dos vetores para salvar novos dados
-    }
-    flag = false;
-  }
-}
-
-
+// ** MONITOR SERIAL **
 void monitorSerial() { // função para imprimir  os resultados obtidos
   for(int j = 0; j < tamanhoBuffer; j++) {
     //Tempo
