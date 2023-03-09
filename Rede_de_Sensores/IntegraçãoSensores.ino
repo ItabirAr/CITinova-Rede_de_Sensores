@@ -153,29 +153,22 @@ void medicaoGY(){
 // ** MONITOR SERIAL **
 void monitorSerial() { // função para imprimir  os resultados obtidos
   for(int j = 0; j < tamanhoBuffer; j++) {
-    //Tempo
-    Serial.print(bufferTempo[j]);
-    //BMP180
+    Serial.print(bufferTempo[j]); //Tempo
     Serial.print(", ");
-    Serial.print(bufferTemperaturaBMP[j]);
+    Serial.print(bufferTemperaturaBMP[j]); //BMP180
     Serial.print(", ");
-    Serial.print(bufferPressaoBMP[j]);
-    //MQ135
+    Serial.print(bufferPressaoBMP[j]);   
     Serial.print(", ");
-    Serial.print(bufferCo2MQ[j]);
-    //LM35
+    Serial.print(bufferCo2MQ[j]); //MQ135   
     Serial.print(", ");
-    Serial.print(bufferTemperaturaLM[j]);
-    //UVM3OA
+    Serial.print(bufferTemperaturaLM[j]); //LM35   
     Serial.print(", ");
-    Serial.print(bufferUltravioletaUVM[j]);
-    //DHT11
+    Serial.print(bufferUltravioletaUVM[j]); //UVM3OA   
     Serial.print(", ");
-    Serial.print(bufferTemperaturaDHT[j]);
+    Serial.print(bufferTemperaturaDHT[j]); //DHT11
     Serial.print(", ");
-    Serial.print(bufferUmidadeDHT[j]);
-    //GY30
+    Serial.print(bufferUmidadeDHT[j]);   
     Serial.print(", ");
-    Serial.println(bufferIluminanciaGY[j]);
+    Serial.println(bufferIluminanciaGY[j]); //GY30
   }
 }
