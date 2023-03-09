@@ -1,3 +1,4 @@
+// Integração dos sensores BMP180, MQ135, LM35, UVM30A, DHT11, GY30
 #include <TimerOne.h> //biblioteca do temporizador interno do arduino
 #include <Adafruit_BMP085.h> //biblioteca do sensor BMP180
 #include <MQ135.h> //biblioteca do sensor MQ135
