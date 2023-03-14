@@ -1,6 +1,5 @@
 // Integração Módulo SD com BMP180, MQ135, UVM30A, DHT11, GY30
 #include <SD.h> // Biblioteca para comunicação com cartão SD
-#include <Adafruit_BMP085.h> //biblioteca do sensor BMP180
 #include <MQ135.h> //biblioteca do sensor MQ135
 #include <DHT.h> //biblioteca do sensor DHT11
 #include <Wire.h> // bibilioteca de comunicação entre dispositivos por protocolo I2C
@@ -15,10 +14,6 @@ String fileName = "bmp.txt";; // Nome do arquivo
 // Buffers para armazenamento de dados
 int bufferIndex = 0; // Índice atual do buffer
 const int bufferSize = 10; // Tamanho do buffer de dados
-// BMP180 (5V) SDA, SCL
-Adafruit_BMP085 bmp; // define bmp como objeto do tipo Adafruit_BMP085 (I2C)
-float bufferTemperaturaBMP[bufferSize]; // vetor para os dados lidos de temperatura
-int bufferPressaoBMP[bufferSize]; // vetor para os dados lidos de pressão
 // MQ135 (5V) A0 
 #define pinoMQ A0
 MQ135 mq = MQ135(pinoMQ);
@@ -40,14 +35,6 @@ void setup() {
   // Inicia comunicação serial com taxa de 9600 bps
   Serial.begin(9600); 
   Serial.println("Inicializando componentes...");
-  // Inicialização do BMP180
-  if (!bmp.begin()) { 
-    // se o sensor não for inicializado, apresenta a mensagem:
-    Serial.println("Sensor BMP180 não foi identificado! Verifique as conexões.");
-    while (1) {
-      // em loop (repetições) até o sensor inicializar
-    }
-  }
   // Inicialização do DHT11
   dht.begin(); //inicializa o sensor DHT11
   // Inicialização do GY30
@@ -63,7 +50,7 @@ void setup() {
   }
   // Deleta um arquivo de mesmo nome caso já exista
   if(SD.exists(fileName)) {
-    SD.remove(filename);
+    SD.remove(fileName);
   } else if (!SD.exists(fileName)) {
     // Cria arquivo de dados se ele não existir
     dataFile = SD.open(fileName, FILE_WRITE);
@@ -71,15 +58,13 @@ void setup() {
   }
   // Abre o arquivo e escreve legenda dos dados
   dataFile = SD.open(fileName, FILE_WRITE);
-  dataFile.println("Tempo[ms], TemperaturaBMP180[°C], Pressão[Pa], Conc.CO2[ppm], IndiceUV, TempDHT11[°C], UmidadeRelativa[%UR], Iluminância[lux]");
+  dataFile.println("Tempo[ms], Conc.CO2[ppm], IndiceUV, Temperatura[°C], UmidadeRelativa[%UR], Iluminância[lux]");
   dataFile.close();
   
   lastSaveTime = millis(); // Inicializa variável de último momento de salvamento de dados
   
   // Inicializa buffers de dados com valor 0
   for (int i = 0; i < bufferSize; i++) {
-    bufferTemperaturaBMP[i] = 0;
-    bufferPressaoBMP[i] = 0;
     bufferCo2MQ[i] = 0;
     bufferUltravioletaUVM[i] = 0;
     bufferTemperaturaDHT[i] = 0;
@@ -96,8 +81,6 @@ void loop() {
 
   // Realiza leitura dos sensores a cada 1 segundo
   if (currentTime - lastReadTime >= 1000) {
-    bufferTemperaturaBMP[bufferIndex] = bmp.readTemperature(); // temperatura informada pelo sensor
-    bufferPressaoBMP[bufferIndex] = bmp.readPressure(); // pressão informada pelo sensor
     bufferCo2MQ[bufferIndex] = mq.getPPM(); // concentração de CO2 informada pelo sensor
     bufferUltravioletaUVM[bufferIndex] = medicaoUVM(); // atribui o valor do índice de radiação uv por meio de uma função
     bufferTemperaturaDHT[bufferIndex] = dht.readTemperature();  // temperatura informada pelo sensor
@@ -181,8 +164,6 @@ void saveData() {
   String dataString = "";
   for (int i = 0; i < bufferSize; i++) {
     dataString += String(currentTime - ((bufferSize - 1 - i) * 1000)) + ", ";
-    dataString += String(bufferTemperaturaBMP[i]) + ", ";
-    dataString += String(bufferPressaoBMP[i]) + ", ";
     dataString += String(bufferCo2MQ[i]) + ", ";
     dataString += String(bufferUltravioletaUVM[i]) + ", ";
     dataString += String(bufferTemperaturaDHT[i]) + ", ";
