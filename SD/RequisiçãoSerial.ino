@@ -3,7 +3,7 @@
 
 // Cria uma variável para representar o arquivo de dados e define o pino do chip select do cartão SD
 File dataFile;
-const int chipSelect = 10;
+const int chipSelect = 53;
 
 void setup() {
   // Inicializa a comunicação serial e define o pino do chip select do cartão SD como saída
@@ -20,10 +20,8 @@ void setup() {
   Serial.println("Programa iniciado.");
 }
 
-void loop() {
-  // Verifica se há dados disponíveis na porta serial
-  if (Serial.available()) {
-    // Lê o tempo inicial e final digitado pelo usuário
+void requisicaoSerial(){
+  // Lê o tempo inicial e final digitado pelo usuário
     unsigned long start_time = Serial.parseInt();
     unsigned long end_time = Serial.parseInt();
     Serial.print("Tempo inicial: ");
@@ -54,5 +52,11 @@ void loop() {
       // Mensagem de erro caso não seja possível abrir o arquivo de dados
       Serial.println("Erro ao abrir arquivo de dados.");
     }
+}
+
+void loop() {
+  // Verifica se há dados disponíveis na porta serial
+  if (Serial.available()) {
+    requisicaoSerial();
   }
 }
