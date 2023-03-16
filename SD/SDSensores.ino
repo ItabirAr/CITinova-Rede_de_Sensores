@@ -62,7 +62,7 @@ void setup() {
   
   // Abre o arquivo e escreve legenda dos dados
   dataFile = SD.open(fileName, FILE_WRITE);
-  dataString = "Tempo[ms], Conc.CO2[ppm], IndiceUV, Temperatura[°C], UmidadeRelativa[%UR], Iluminância[lux]"
+  dataString = "Tempo[ms], Conc.CO2[ppm], IndiceUV, Temperatura[°C], UmidadeRelativa[%UR], Iluminância[lux]";
   dataFile.print(dataString);
   dataFile.close();
   
