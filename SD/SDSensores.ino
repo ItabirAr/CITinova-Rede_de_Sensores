@@ -14,6 +14,7 @@ String fileName = "bmp.txt";; // Nome do arquivo
 // Buffers para armazenamento de dados
 int bufferIndex = 0; // Índice atual do buffer
 const int bufferSize = 10; // Tamanho do buffer de dados
+String dataString = ""; // Cria uma string
 // MQ135 (5V) A0 
 #define pinoMQ A0
 MQ135 mq = MQ135(pinoMQ);
@@ -51,14 +52,17 @@ void setup() {
   // Deleta um arquivo de mesmo nome caso já exista
   if(SD.exists(fileName)) {
     SD.remove(fileName);
-  } else if (!SD.exists(fileName)) {
-    // Cria arquivo de dados se ele não existir
+  }
+  // Cria arquivo de dados
+  if (!SD.exists(fileName)) {
     dataFile = SD.open(fileName, FILE_WRITE);
     dataFile.close();
   }
+  
   // Abre o arquivo e escreve legenda dos dados
   dataFile = SD.open(fileName, FILE_WRITE);
-  dataFile.println("Tempo[ms], Conc.CO2[ppm], IndiceUV, Temperatura[°C], UmidadeRelativa[%UR], Iluminância[lux]");
+  dataString = "Tempo[ms], Conc.CO2[ppm], IndiceUV, Temperatura[°C], UmidadeRelativa[%UR], Iluminância[lux]"
+  dataFile.print(dataString);
   dataFile.close();
   
   lastSaveTime = millis(); // Inicializa variável de último momento de salvamento de dados
@@ -160,8 +164,7 @@ void saveData() {
   // Atualiza o lastSaveTime com o currentTime
   lastSaveTime = currentTime;
 
-  // Cria uma string com os dados do buffer
-  String dataString = "";
+  // Atribui os dados do buffer
   for (int i = 0; i < bufferSize; i++) {
     dataString += String(currentTime - ((bufferSize - 1 - i) * 1000)) + ", ";
     dataString += String(bufferCo2MQ[i]) + ", ";
