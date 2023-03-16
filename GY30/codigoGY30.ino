@@ -1,3 +1,4 @@
+#include <Wire.h> // bibilioteca de comunicação entre dispositivos por protocolo I2C
 #include <BH1750.h> //biblioteca do sensor GY30
 
 BH1750 gy; //define gy como objeto do tipo BH1750
