@@ -39,6 +39,7 @@ void setup() {
   // Inicialização do DHT11
   dht.begin(); //inicializa o sensor DHT11
   // Inicialização do GY30
+  Wire.begin(); //inicializa o I2C BUS
   gy.begin(); //inicializa o sensor GY30
   // Testa se os sensores DHT11 e GY30 estão recebendo dados numéricos
   testeDHT_GY();
