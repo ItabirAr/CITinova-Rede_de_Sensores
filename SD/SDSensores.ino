@@ -36,13 +36,7 @@ void setup() {
   // Inicia comunicação serial com taxa de 9600 bps
   Serial.begin(9600); 
   Serial.println("Inicializando componentes...");
-  // Inicialização do DHT11
-  dht.begin(); //inicializa o sensor DHT11
-  // Inicialização do GY30
-  Wire.begin(); //inicializa o I2C BUS
-  gy.begin(); //inicializa o sensor GY30
-  // Testa se os sensores DHT11 e GY30 estão recebendo dados numéricos
-  testeDHT_GY();
+  
   // Configura pino de seleção do cartão SD como saída
   pinMode(chipSelect, OUTPUT);
   // Inicializa cartão SD
@@ -50,6 +44,15 @@ void setup() {
     Serial.println("Erro ao inicializar o cartão SD! Verifique as conexões.");
     return;
   }
+  
+  // Inicialização do DHT11
+  dht.begin(); //inicializa o sensor DHT11
+  // Inicialização do GY30
+  Wire.begin(); //inicializa o I2C BUS
+  gy.begin(); //inicializa o sensor GY30
+  // Testa se os sensores DHT11 e GY30 estão recebendo dados numéricos
+  testeDHT_GY();
+  
   // Deleta um arquivo de mesmo nome caso já exista
   if(SD.exists(fileName)) {
     SD.remove(fileName);
