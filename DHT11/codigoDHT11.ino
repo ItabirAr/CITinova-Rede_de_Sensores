@@ -1,6 +1,6 @@
 #include <DHT.h> //biblioteca do sensor DHT11
 
-#define pinoDHT A3 //pino  usado para a conexão
+#define pinoDHT A1 //pino  usado para a conexão
 #define modeloDHT DHT11 //modelo do sensor
 DHT dht(pinoDHT, modeloDHT); // define dht como objeto do tipo DHT
 float Temperatura; //vetor para os dados lidos de temperatura
