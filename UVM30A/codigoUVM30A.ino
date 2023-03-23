@@ -1,4 +1,4 @@
-#define pinoUVM A1 //pino do Arduino usado para a conexão
+#define pinoUVM A0 //pino do Arduino usado para a conexão
 float tensao; //nível de tensão de saída do sensor lido no arduino
 int IndiceUV; //variável auxiliar para o Índice de Intensidade de Raios Ultravioleta
 
