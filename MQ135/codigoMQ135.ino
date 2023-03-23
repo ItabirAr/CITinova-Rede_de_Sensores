@@ -1,6 +1,6 @@
 #include <MQ135.h> //biblioteca do sensor MQ135
 
-#define pinoMQ A0 //pino do Arduino usado para a conexão
+#define pinoMQ A2 //pino do Arduino usado para a conexão
 MQ135 mq = MQ135(pinoMQ); //define mq como objeto do tipo MQ135
 float ConcentrCO2; //variável auxiliar para os dados lidos de CO2
 
