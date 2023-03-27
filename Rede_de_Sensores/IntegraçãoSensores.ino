@@ -103,7 +103,7 @@ void medicaoTemperaturaLM(){
 
 // ** FUNÇÃO UVM30A **
 int medicaoUVM(){
-  float leituraSensorUVM = analogRead(pinoUVM); // atribui o nível de tensão na saída do sensor a uma variavel
+  float leituraSensorUVM = analogRead(pinoUVM)* (5000 / 1023); // atribui o nível de tensão na saída do sensor a uma variavel
   if (leituraSensorUVM >= 0 && leituraSensorUVM < 50) {
     return 0;
   } else if (leituraSensorUVM >= 50 && leituraSensorUVM < 227) {
