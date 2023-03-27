@@ -26,7 +26,7 @@ Com isso, uma das saídas viáveis para contornar esse problema foi o uso de sen
 
 Os sensores de baixo custo, mesmo mostrando-se inferior em relação a precisão comparados a sensores mais avançados, obtiveram êxitos em relação à eficientes para o monitoramento do ar em centros urbanos, além de demonstrar que a sua implementação é muito mais simplificada, quando comparado com modelos de monitoramentos mais avançados, outra vantagem foi a forma de armazenamento em nuvens, pois vem se tornando cada vez mais baratos, comparados a outros meios de armazenamento.
 
-Tendo as seguintes formulações, foi se proposto no projeto, a criação de de um protótipo capaz de monitorar a qualidade do ar com um Arduino Uno, com armazenamento local em uma memória SD e enviadas para uma nuvem, assim possibilitando ter uma forma de armazenamento dos dados e ao mesmo tempo possibilitando o trabalho desses dados via rede.
+Tendo as seguintes formulações, foi se proposto no projeto, a criação de de um protótipo capaz de monitorar a qualidade do ar (realizando medidas de temperatura, número de partículas por milhão no ar, umidade relativa do ar, gases presentes, raios UV e etc. ) com um Arduino Uno, com armazenamento local em uma memória SD e enviadas para uma nuvem, assim possibilitando ter uma forma de armazenamento dos dados e ao mesmo tempo possibilitando o trabalho desses dados via rede.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/69599494/227247901-183fb1bf-043d-4539-a6cf-8b0df642bd20.png" width="600" />
@@ -34,25 +34,22 @@ Tendo as seguintes formulações, foi se proposto no projeto, a criação de de 
 
 # Protótipo 
 
+Atualmente o protótipo em desenvolvimento está sendo montado em uma protoboard, e para uma apresentação mais rápida e simplificada, foi implementado um display oled. Além dos seguintes sensores que compõem o protótipo em desenvolvimento:
+
 <div align="center">
 <img src="https://user-images.githubusercontent.com/69599494/226956983-3db41e9a-ea82-497c-b085-3198e567dc17.png" width="600" />
 </div>
 
-Atualmente, estão sendo testados os seguintes sensores para a elaboração do protótipo:
+# Sensores 
 
+	* MQ-135 (concentração de gases) 
+	* BMP180 (Temperatura, pressão e altitude) 
+	* LM35 (Temperatura)
+	* UVM-30A (Raios ultravioletas) 
+	* DHT11 (Temperatura e umidade relativa do ar) 
+	* GY-30 (Intensidade luminosa por área) 
 
-<h1> Sensores </h1>
-	
-<ul>
-	<li>MQ-135 (concentração de gases) </li>
-	<li>BMP180 (Temperatura, pressão e altitude) </li>
-	<li>LM35 (Temperatura)</li>
-	<li>UVM-30A (Raios ultravioletas) </li>
-	<li>DHT11 (Temperatura e umidade relativa do ar) </li>
-	<li>GY-30 (Intensidade luminosa por área) </li>
-	
-<ul>
+Para mais informações em relação a cada sensor, é possível econtrar mais informações no seguinte link: <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores">Clique aqui</a>
 
-
-
+No qual contém uma pasta para cada sensor com as especificações técnicas (contido no arquivo readme.md )e um código em C (composto por um arquivo ino) que possibilita ver o funcionamento prático do sensor.
 
