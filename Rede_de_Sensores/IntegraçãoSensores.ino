@@ -17,20 +17,20 @@ float bufferTemperaturaBMP[tamanhoBuffer]; // vetor para os dados lidos de tempe
 int bufferPressaoBMP[tamanhoBuffer]; // vetor para os dados lidos de pressão
 
 // ** VARIAVEIS MQ135 ** (5V) A0 
-#define pinoMQ A0
+#define pinoMQ A2
 MQ135 mq = MQ135(pinoMQ);
 float bufferCo2MQ[tamanhoBuffer]; // vetor para os dados lidos de CO2
 
 // ** VARIAVEIS LM35 ** (5V) A2
-#define pinoLM A2
+#define pinoLM A4
 float bufferTemperaturaLM[tamanhoBuffer];  //declara um vetor para resposta do sensor
 
 // ** VARIAVEIS UVM30A ** (3,3V ou 5V) A1
-#define pinoUVM A1
+#define pinoUVM A0
 int bufferUltravioletaUVM[tamanhoBuffer];   // declara um vetor para a resposta do sensor
 
 // ** VARIAVEIS DHT11 ** (3,3V ou 5V) A3
-#define pinoDHT A3 // pino usado para conexão
+#define pinoDHT A1 // pino usado para conexão
 #define modeloDHT DHT11 // modelo do sensor
 DHT dht(pinoDHT, modeloDHT); // define dht como objeto do tipo DHT
 float bufferTemperaturaDHT[tamanhoBuffer]; // vetor para os dados lidos de temperatura
