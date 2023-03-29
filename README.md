@@ -48,8 +48,16 @@ Atualmente o protótipo em desenvolvimento está sendo montado em uma protoboard
 	* UVM-30A (Raios ultravioletas) 
 	* DHT11 (Temperatura e umidade relativa do ar) 
 	* GY-30 (Intensidade luminosa por área) 
+*PMS5003 (Sensor de concentração de partículas)
 
-Para mais informações em relação a cada sensor, é possível econtrar mais informações no seguinte link: <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores">Clique aqui</a>
+Para mais informações em relação a cada sensor, é possível encontrar mais informações nos seguintes link: 
 
-No qual contém uma pasta para cada sensor com as especificações técnicas (contido no arquivo readme.md )e um código em C (composto por um arquivo ino) que possibilita ver o funcionamento prático do sensor.
+* <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/BMP180">BMP180</a>
+* <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/DHT11">DHT11</a>
+* <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/GY30">GY30</a>
+* <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/LM35">LM35</a>
+* <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/MQ135">MQ-135</a>
+* <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/UVM30A">UVM-30A</a>
+* <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/PMS5003">PMS5003</a>
 
+Contendo duas pastas, do qual uma delas sendo o arquivo readme.md, nela estão contidos informações básicas em relação à informações técnicas, forma de funcionamento do sensor e a forma de montagem do sensor. O outro arquivo está em um formato ino, sendo um arquivo com as programações básicas na linguagem C, para o funcionamento do sensor.
