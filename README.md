@@ -48,7 +48,7 @@ Atualmente o protótipo em desenvolvimento está sendo montado em uma protoboard
 	* UVM-30A (Raios ultravioletas) 
 	* DHT11 (Temperatura e umidade relativa do ar) 
 	* GY-30 (Intensidade luminosa por área) 
-*PMS5003 (Sensor de concentração de partículas)
+	* PMS5003 (Sensor de concentração de partículas)
 
 Para mais informações em relação a cada sensor, é possível encontrar mais informações nos seguintes link: 
 
