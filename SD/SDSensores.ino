@@ -110,7 +110,7 @@ void loop() {
 
 // Função do UVM30A
 int medicaoUVM(){
-  float leituraSensorUVM = analogRead(pinoUVM); // atribui nível de tensão de saída do sensor a uma variavel
+  float leituraSensorUVM = analogRead(pinoUVM)*(5000 / 1023); // atribui nível de tensão de saída do sensor a uma variavel
   if (leituraSensorUVM >= 0 && leituraSensorUVM < 50) {
     return 0;
   } else if (leituraSensorUVM >= 50 && leituraSensorUVM < 227) {
