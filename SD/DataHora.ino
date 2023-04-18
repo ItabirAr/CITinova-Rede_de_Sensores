@@ -33,7 +33,7 @@ void loop() {
   // Cria uma string com a data/hora formatada
   String dateTimeStr = String(now.year(), DEC) + "/" + 
                        String(now.month(), DEC) + "/" + 
-                       String(now.day(), DEC) + " " + 
+                       String(now.day(), DEC) + ", " + 
                        String(now.hour(), DEC) + ":" + 
                        String(now.minute(), DEC) + ":" + 
                        String(now.second(), DEC);
