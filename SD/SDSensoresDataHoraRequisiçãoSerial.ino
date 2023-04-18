@@ -124,7 +124,7 @@ void loop() {
 
   // Realiza leitura dos sensores a cada X segundos
   if (currentTime - lastReadTime >= samplingTime) {
-    bufferDataHora[bufferIndex] = rtcDataHora();
+    bufferDataHora[bufferIndex] = rtcDataHora(); // data e hora em tempo real
     bufferTemperaturaBMP[bufferIndex] = bmp.readTemperature(); // temperatura informada pelo sensor
     bufferPressaoBMP[bufferIndex] = bmp.readPressure(); // pressão informada pelo sensor
     bufferCo2MQ[bufferIndex] = mq.getPPM(); // concentração de CO2 informada pelo sensor
@@ -148,10 +148,10 @@ void loop() {
 }
 
 
+// Função para leitura de Data e Hora em tempo real
 String rtcDataHora() {
-  DateTime now = rtc.now();   // Lê a data/hora atual do RTC
-
-  // Cria uma string com a data/hora formatada
+  DateTime now = rtc.now(); // Lê a data/hora atual do RTC
+  // Cria uma string com a data e hora formatadas
   String dateTime = "";
   dateTime += String(now.year(), DEC) + "/";
   dateTime += String(now.month(), DEC) + "/";
@@ -159,14 +159,12 @@ String rtcDataHora() {
   dateTime += String(now.hour(), DEC) + ":";
   dateTime += String(now.minute(), DEC) + ":";
   dateTime += String(now.second(), DEC);
-  
-  
   return dateTime;
 }
 
 // Função do UVM30A
 int medicaoUVM(){
-  float leituraSensorUVM = analogRead(pinoUVM)*(5000 / 1023); // atribui nível de tensão de saída do sensor a uma variavel
+  float leituraSensorUVM = analogRead(pinoUVM)*(5000/1023); // atribui nível de tensão de saída do sensor a uma variavel
   if (leituraSensorUVM >= 0 && leituraSensorUVM < 50) {
     return 0;
   } else if (leituraSensorUVM >= 50 && leituraSensorUVM < 227) {
@@ -215,8 +213,8 @@ void saveData() {
   // Obtém momento atual
   unsigned long currentTime = millis();
 
-  // Verifica se já passaram 10 segundos desde o último salvamento de dados
-  if (currentTime - lastSaveTime < 10000) {
+  // Verifica se já passaram X segundos desde o último salvamento de dados
+  if (currentTime - lastSaveTime < ((bufferSize + 1)*samplingTime) ) {
     return;
   }
 
@@ -247,5 +245,3 @@ void saveData() {
   dataString = "";
   Serial.println("Dados salvos.");
 }
-
-
