@@ -1,11 +1,10 @@
 #include <SD.h> // Biblioteca para usar o cartão SD
 #include <SPI.h> // Biblioteca para comunicar com o cartão SD via SPI
-#include <Wire.h> // Biblioteca para comunicar com o RTC via I2C
+#include <Wire.h> // bibilioteca de comunicação entre dispositivos por protocolo I2C
 #include "RTClib.h" // Biblioteca para usar o RTC
 #include <Adafruit_BMP085.h> //biblioteca do sensor BMP180
 #include <MQ135.h> //biblioteca do sensor MQ135
 #include <DHT.h> //biblioteca do sensor DHT11
-#include <Wire.h> // bibilioteca de comunicação entre dispositivos por protocolo I2C
 #include <BH1750.h> //biblioteca do sensor GY30
 
 
@@ -94,7 +93,7 @@ void setup() {
   
   // Abre o arquivo e escreve legenda dos dados
   dataFile = SD.open(fileName, FILE_WRITE);
-  dataString = "Data, Hora, TemperaturaBMP180[°C], Pressão[Pa], Conc.CO2[ppm], IndiceUV, TempDHT11[°C], UmidadeRelativa[%UR], Iluminância[lux]";
+  dataString = "Data, Hora, Temperatura[°C], Pressão[Pa], Conc.CO2[ppm], IndiceUV, TempDHT11[°C], UmidadeRelativa[%UR], Iluminância[lux]";
   dataFile.print(dataString);
   dataFile.close();
   
