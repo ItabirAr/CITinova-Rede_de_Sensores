@@ -1,4 +1,4 @@
-// Integração Módulo SD com BMP180, MQ135, UVM30A, DHT11, GY30
+// Integração Módulo SD com MQ135, UVM30A, DHT11, GY30
 #include <SD.h> // Biblioteca para comunicação com cartão SD
 #include <MQ135.h> //biblioteca do sensor MQ135
 #include <DHT.h> //biblioteca do sensor DHT11
