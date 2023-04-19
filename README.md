@@ -68,7 +68,7 @@ Para o acesso de dados armazenados na nuvem existem dois comandos realizados no 
 
 ## getData();
 
-No qual o comando consiste em realizar uma busca completa de dados,  isto é, fazer uma impressão de todo os dados armazenados desde o seu funcionamento no serial.
+No qual o comando getData() consiste em realizar uma busca completa de dados,  isto é, fazer uma impressão de todo os dados armazenados desde o seu funcionamento no serial.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/69599494/233125722-b0a98ca3-a625-4269-b334-ed461e761b3a.png" width="500" />
