@@ -64,6 +64,9 @@ Contendo duas pastas, do qual uma delas sendo o arquivo readme.md, nela estão c
 
 # Solicitação via Serial
 
+
+A interação do protótipo Rede de Sensores com o usuário se dará via comunicação serial através do protocolo de comunicação serial RS232. O usuário poderá utilizar qualquer ferramenta que tenha essa funcionalidade, e existem várias ferramentas gratuitas disponíveis, como o PuTTY, o RealTerm e o Termite.
+Além disso, é possível desenvolver uma aplicação de software dedicado para consumir as informações geradas pelo protótipo. Existem várias linguagens de programação que podem ser utilizadas para esse fim, entre elas destacam-se o Python, o Java e o C++. É importante escolher uma linguagem de programação que atenda às necessidades do projeto e que o desenvolvedor tenha conhecimento para trabalhar.
 Para o acesso de dados armazenados na nuvem existem dois comandos realizados no serial
 
 ## getData();
