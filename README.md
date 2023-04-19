@@ -24,9 +24,9 @@ Com isso, uma das saídas viáveis para contornar esse problema foi o uso de sen
 
 # Sensores de baixo custo
 
-Os sensores de baixo custo, mesmo mostrando-se inferior em relação a precisão comparados a sensores mais avançados, obtiveram êxitos em relação à eficientes para o monitoramento do ar em centros urbanos, além de demonstrar que a sua implementação é muito mais simplificada, quando comparado com modelos de monitoramentos mais avançados, outra vantagem foi a forma de armazenamento em nuvens, pois vem se tornando cada vez mais baratos, comparados a outros meios de armazenamento.
+Os sensores de baixo custo, mesmo mostrando-se inferior em relação a precisão comparados a sensores mais avançados, obtiveram êxitos em relação à eficientes para o monitoramento do ar em centros urbanos, além de demonstrar que a sua implementação é muito mais simplificada, quando comparado com modelos de monitoramentos mais avançados, além de possibilitar diversas formas flexíveis de armazenamento, sendo uma delas o armazenamento em nuvens, provando ser uma dar formas mais viáveis economicamente e extremamente eficiente para o projeto proposto, comparados a outros meios de armazenamento.
 
-Tendo as seguintes formulações, foi se proposto no projeto, a criação de de um protótipo capaz de monitorar a qualidade do ar (realizando medidas de temperatura, número de partículas por milhão no ar, umidade relativa do ar, gases presentes, raios UV e etc. ) com um Arduino Uno, com armazenamento local em uma memória SD e enviadas para uma nuvem, assim possibilitando ter uma forma de armazenamento dos dados e ao mesmo tempo possibilitando o trabalho desses dados via rede.
+Tendo as seguintes formulações, foi se proposto no projeto, a criação de de um protótipo capaz de monitorar a qualidade do ar de baixo custo (realizando medidas de temperatura, número de partículas por milhão no ar, umidade relativa do ar, gases presentes, raios UV e etc. ) com um Arduino Uno, com armazenamento local em uma memória SD e enviadas para uma nuvem, assim possibilitando ter uma forma de armazenamento dos dados e ao mesmo tempo possibilitando o trabalho desses dados via rede.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/69599494/227247901-183fb1bf-043d-4539-a6cf-8b0df642bd20.png" width="600" />
