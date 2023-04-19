@@ -62,7 +62,7 @@ Para mais informações em relação a cada sensor, é possível encontrar mais 
 
 Contendo duas pastas, do qual uma delas sendo o arquivo readme.md, nela estão contidos informações básicas em relação à informações técnicas, forma de funcionamento do sensor e a forma de montagem do sensor. O outro arquivo está em um formato ino, sendo um arquivo com as programações básicas na linguagem C, para o funcionamento do sensor.
 
-# Comunicação Serial
+# Solicitação via Serial
 
 Para o acesso de dados armazenados na nuvem existem dois comandos realizados no serial
 
