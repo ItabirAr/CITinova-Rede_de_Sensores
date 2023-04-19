@@ -1,7 +1,7 @@
 # Sensor PMS 5003
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/69599494/218602613-a81b8dfa-1378-4e88-936e-6c92e9419689.png" width="500" />
+<img src="" width="500" />
 </div>
 
 
