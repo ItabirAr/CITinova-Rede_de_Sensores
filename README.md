@@ -61,3 +61,23 @@ Para mais informações em relação a cada sensor, é possível encontrar mais 
 * <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/PMS5003">PMS5003</a>
 
 Contendo duas pastas, do qual uma delas sendo o arquivo readme.md, nela estão contidos informações básicas em relação à informações técnicas, forma de funcionamento do sensor e a forma de montagem do sensor. O outro arquivo está em um formato ino, sendo um arquivo com as programações básicas na linguagem C, para o funcionamento do sensor.
+
+# Comunicação Serial
+
+Para o acesso de dados armazenados na nuvem existem dois comandos realizados no serial
+
+## getData();
+
+No qual o comando consiste em realizar uma busca completa de dados,  isto é, fazer uma impressão de todo os dados armazenados desde o seu funcionamento no serial.
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/233125722-b0a98ca3-a625-4269-b334-ed461e761b3a.png" width="500" />
+</div>
+
+## getData(D1_M1_A1_D2_M2_A2)
+
+O segundo método de impressão consiste em realizar uma busca mais específica (um intervalo de tempo mais preciso), o comando consiste em utilizar o getData(), no entanto é necessário realizar um inserção de tempo desejado, getData(D1_M1_A1_D2_M2_A2) sendo que D significa o dia, M o més e o A o ano, além de que as variáveis acompanhado com o número 1 está relacionado a data inicial de leitura e as variáveis acompanhados por 2 está relacionado a data final de leitura.
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/233128545-27d77d97-19fb-4789-95f3-64ff5889e3a3.png" width="700" />
+</div>
