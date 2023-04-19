@@ -1,5 +1,9 @@
 # Sensor PMS 5003
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/233121421-e74edd3f-a384-4176-8d07-0c6d76be19f8.png" width="500" />
+</div>
+
 Pinos   | Função | Definição
 --------|--------|----------
 PIN 1    | VCC    | Tensão de 5V
