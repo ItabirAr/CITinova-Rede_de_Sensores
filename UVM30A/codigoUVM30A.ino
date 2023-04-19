@@ -1,4 +1,4 @@
-#define pinoUVM A1 //pino do Arduino usado para a conexão
+#define pinoUVM A0 //pino do Arduino usado para a conexão
 float tensao; //nível de tensão de saída do sensor lido no arduino
 int IndiceUV; //variável auxiliar para o Índice de Intensidade de Raios Ultravioleta
 
@@ -9,7 +9,7 @@ void setup()
 
 int indice() //Atribuição dos valores medidos
 {
-  tensao = analogRead(pinoUVM); //atribui o valor lido da tensão à variável auxilar
+  tensao = analogRead(pinoUVM)* (5000 / 1023); //atribui o valor lido da tensão à variável auxilar
   if (tensao >= 0 && tensao < 50) {  return 0; } 
   else if (tensao >= 50 && tensao < 227) { return 1; } 
   else if (tensao >= 227 && tensao < 318) { return 2; } 
@@ -36,7 +36,7 @@ void loop()
   else if (IndiceUV == 6 || IndiceUV == 7) { Serial.print(", Alto"); }
   else if (IndiceUV == 8 || IndiceUV == 9 || IndiceUV == 10)  { Serial.print(", Altíssimo"); }
   else if (IndiceUV == 11) { Serial.print(", Extremo"); }
-  Serial.print("");
+  Serial.println("");
 
   delay(1000); //intervalo de 1 segundo
 }

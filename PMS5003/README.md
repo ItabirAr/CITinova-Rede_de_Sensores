@@ -1,49 +1,9 @@
-# pms5003
+# Sensor PMS 5003
 
-O PMS 5003 é um um sensor de concentração de partículas digital e universal, extremamente preciso, capaz de captar partículas de até 0.3μm.
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/233121421-e74edd3f-a384-4176-8d07-0c6d76be19f8.png" width="500" />
+</div>
 
-
-# Princípio de Funcionamento
-
-Através do espalhamento de laser dentro do cabine, há uma irradiação nas partículas presentes no interior do sensor (causando assim uma mudança nos feixes do laser em relação a condição inicial). Em seguida, tendo a alteração nos feixes do laser, os dados são coletados.
-
-# Objetivos
-
- - Entender e verificar as ligações do sensor 
- - Desenvolver o código 
-
-# DataSheet
-
-Primeiramente é preciso verificar o DataSheet, assim encontrando informações mais completas do sensor em relação a informações técnicas, etc.
-
-- pms5003-manual_v2-3
-
-
-# Preparação 
-
-### Materiais
-
-- Arduino
-- Sensor pms5003
-- Conversor de nível lógico
-- 2 resistores 10K
-
-### IDE
-
-- Arduino IDE
-
-### Bibliotecas
-
-- AltSoftSerial-master
-- pms5003-master
-
-# Conexões
-
-**Importante:** o sensor PMS5003 usa 5V para o funcionamento do ventilador que ele contém e 3,3V para lógica e obtenção de dados.
-
-O sensor contém 8 pins, a contagem dos pins começa da direita para a esquerda, como é perceptível na imagem:
-
-![](Imagens/pins.png)
 Pinos   | Função | Definição
 --------|--------|----------
 PIN 1    | VCC    | Tensão de 5V
@@ -54,109 +14,28 @@ PIN 5   | TX     | Porta serial enviando dados / 3.3V
 PIN 6   | RESET  | Reseta o sinal
 PIN 7/8 | NC     |
 
-# Código
-```C++
-// Please uncomment #define PMS_DYNAMIC in pmsConfig.h file
-// or use #define PMS_DYNAMIC before #include <pms.h>
+## Descrição do Sensor
+Através do espalhamento de laser dentro do cabine, há uma irradiação nas partículas presentes no interior do sensor (causando assim uma mudança nos feixes do laser em relação a condição inicial). Em seguida, tendo a alteração nos feixes do laser, os dados são coletados. Através do processamento de dados é possível obter a concentração e o tamanho das partículas no ambiente de estudo. 
 
-#define PMS_DYNAMIC
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/232941028-af9a90ca-b2d9-441d-9f3b-7c6f5d3fcba3.png" />
+</div>
 
-#include <pms.h>
-
-////////////////////////////////////////
-
-PmsAltSerial pmsSerial;
-
-#if defined PMS_DYNAMIC
-pmsx::Pms* pms = nullptr;
-#else
-pmsx::Pms pms(&pmsSerial);
-#endif
-
-// * PMS5003 Pin 1 : VCC +5V
-// * PMS5003 Pin 2 : GND
-// Important: pms5003 uses 3.3V logic. Use converters if required or make sure your Arduino board uses 3.3V logic too.
-// * PMS5003 Pin 4 : Digital pin 9 (there is no choice, forced by AltSerial)
-// * PMS5003 Pin 5 : Digital pin 8 (there is no choice, forced by AltSerial)
-// * Optional
-//   * PMS5003 Pin 3 : Digital pin 7 (can be changed or not connected at all)
-//   * PMS5003 Pin 6 : Digital pin 6 (can be changed or not connected at all)
-
-// if PMS5003 Pin 3  and PMS5003 Pin 3 are not connected
-// constexpr uint8_t pinReset = pmsx::Pms::pinNone;
-// constexpr uint8_t pinSleepMode = pmsx::Pms::pinNone;
-
-// if PMS5003 Pin 3  and PMS5003 Pin 3 are connected
-constexpr uint8_t pinReset = 6;
-constexpr uint8_t pinSleepMode = 7;
-
-////////////////////////////////////////
-
-float PM25[10];
-int i=0,j=0;
-
-void setup(void) {
-	Serial.begin(9600);
-	while (!Serial) {}
-	Serial.println(pmsx::pmsxApiVersion);
-
-#if defined PMS_DYNAMIC
-	pms = new pmsx::Pms(&pmsSerial);
-	if (!pms->initialized()) {
-#else
-	if (!pms->begin()) {
-#endif
-		Serial.println("Serial communication with PMS sensor failed");
-		return;
-	}
-
-	pms->setPinReset(pinReset);
-	pms->setPinSleepMode(pinSleepMode);
-
-	if (!pms->write(pmsx::PmsCmd::CMD_RESET)) {
-		pms->write(pmsx::PmsCmd::CMD_SLEEP);
-		pms->write(pmsx::PmsCmd::CMD_WAKEUP);
-	}
-	pms->write(pmsx::PmsCmd::CMD_MODE_PASSIVE);
-	pms->write(pmsx::PmsCmd::CMD_READ_DATA);
-	pms->waitForData(pmsx::Pms::TIMEOUT_PASSIVE, pmsx::PmsData::FRAME_SIZE);
-	pmsx::PmsData data;
-	auto status = pms->read(data);
-	if (status != pmsx::PmsStatus::OK) {
-		Serial.print("PMS sensor: ");
-		Serial.println(status.getErrorMsg());
-	}
-	pms->write(pmsx::PmsCmd::CMD_MODE_ACTIVE);
-	if (!pms->isWorking()) {
-		Serial.println("PMS sensor failed");
-	}
-
-	Serial.print("Time of setup(): ");
-	Serial.println(millis());
-}
-
-////////////////////////////////////////
-void loop(void) {
-
-	static auto lastRead = millis();
-	pmsx::PmsData data;
-	auto status = pms->read(data);
-	switch (status) {
-	case pmsx::PmsStatus::OK: {
-		for(i=0;i<10;i++){
-		auto view = data.particles;
-    auto data_PM25 = view.getLevel(3);
-    PM25[i] = data_PM25;
-    Serial.println(PM25[i]);
-    }
-  }
-	case pmsx::PmsStatus::NO_DATA:
-		break;
-	default:
-		Serial.print("!!! Pms error: ");
-		Serial.println(status.getErrorMsg());
-	}
-}
-```
+O PMS 5003 é um um sensor de concentração de partículas digital e universal, extremamente preciso, capaz de captar partículas de até 0.3μm. É projetado com blindagem nas 6 paredes do eletrônico para evitar interferências não desejadas. 
 
 
+
+## Documentação
+
+O datasheet contendo a documentação do sensor BMP180 pode ser encontrada no seguinte link: <a href="https://www.digikey.jp/htmldatasheets/production/2903006/0/0/1/pms5003-series-manual.html">Clique aqui</a>
+
+<h1> Informações Técnicas </h1>
+	
+<ul>
+	<li>PMS 5003</li>
+	<li>Faixa de leitura de PM2,5: ±10% 100~500μ </li>
+	<li>Eficiência de contagem de PM:50% para 0,3μm   98% para >=0,5μm </li>
+	<li>Temperatura ideal para o funcionamento: -10 à +60°C</li>
+	<li>Umidade ideal para o funcionamento: 0 à 99% de umidade relativa do ar</li>
+	<li>Dimensões 50x38x21mm</li>
+<ul>
