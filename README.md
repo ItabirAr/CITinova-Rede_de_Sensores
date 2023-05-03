@@ -24,9 +24,9 @@ Com isso, uma das saídas viáveis para contornar esse problema foi o uso de sen
 
 # Sensores de baixo custo
 
-Os sensores de baixo custo, mesmo mostrando-se inferior em relação a precisão comparados a sensores mais avançados, obtiveram êxitos em relação à eficientes para o monitoramento do ar em centros urbanos, além de demonstrar que a sua implementação é muito mais simplificada, quando comparado com modelos de monitoramentos mais avançados, outra vantagem foi a forma de armazenamento em nuvens, pois vem se tornando cada vez mais baratos, comparados a outros meios de armazenamento.
+Os sensores de baixo custo, mesmo mostrando-se inferior em relação a precisão comparados a sensores mais avançados, obtiveram êxitos em relação à eficientes para o monitoramento do ar em centros urbanos, além de demonstrar que a sua implementação é muito mais simplificada, quando comparado com modelos de monitoramentos mais avançados, além de possibilitar diversas formas flexíveis de armazenamento, sendo uma delas o armazenamento em nuvens, provando ser uma dar formas mais viáveis economicamente e extremamente eficiente para o projeto proposto, comparados a outros meios de armazenamento.
 
-Tendo as seguintes formulações, foi se proposto no projeto, a criação de de um protótipo capaz de monitorar a qualidade do ar (realizando medidas de temperatura, número de partículas por milhão no ar, umidade relativa do ar, gases presentes, raios UV e etc. ) com um Arduino Uno, com armazenamento local em uma memória SD e enviadas para uma nuvem, assim possibilitando ter uma forma de armazenamento dos dados e ao mesmo tempo possibilitando o trabalho desses dados via rede.
+Tendo as seguintes formulações, foi se proposto no projeto, a criação de de um protótipo capaz de monitorar a qualidade do ar de baixo custo (realizando medidas de temperatura, número de partículas por milhão no ar, umidade relativa do ar, gases presentes, raios UV e etc. ) com um Arduino Uno, com armazenamento local em uma memória SD e enviadas para uma nuvem, assim possibilitando ter uma forma de armazenamento dos dados e ao mesmo tempo possibilitando o trabalho desses dados via rede.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/69599494/227247901-183fb1bf-043d-4539-a6cf-8b0df642bd20.png" width="600" />
@@ -61,3 +61,27 @@ Para mais informações em relação a cada sensor, é possível encontrar mais 
 * <a href="https://github.com/ItabirAr/CITinova-Rede_de_Sensores/tree/main/PMS5003">PMS5003</a>
 
 Contendo duas pastas, do qual uma delas sendo o arquivo readme.md, nela estão contidos informações básicas em relação à informações técnicas, forma de funcionamento do sensor e a forma de montagem do sensor. O outro arquivo está em um formato ino, sendo um arquivo com as programações básicas na linguagem C, para o funcionamento do sensor.
+
+# Solicitação via Serial
+
+
+A interação do protótipo Rede de Sensores com o usuário se dará via comunicação serial através do protocolo de comunicação serial RS232. O usuário poderá utilizar qualquer ferramenta que tenha essa funcionalidade, e existem várias ferramentas gratuitas disponíveis, como o PuTTY, o RealTerm e o Termite.
+Além disso, é possível desenvolver uma aplicação de software dedicado para consumir as informações geradas pelo protótipo. Existem várias linguagens de programação que podem ser utilizadas para esse fim, entre elas destacam-se o Python, o Java e o C++. É importante escolher uma linguagem de programação que atenda às necessidades do projeto e que o desenvolvedor tenha conhecimento para trabalhar.
+
+Com isso para acessar os dados armazenados na nuvem como o código elaborado e disponibilizado no projeto, existem dois comandos realizados no serial.
+
+## getData();
+
+No qual o comando getData() consiste em realizar uma busca completa de dados,  isto é, fazer uma impressão de todo os dados armazenados desde o seu funcionamento no serial.
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/233125722-b0a98ca3-a625-4269-b334-ed461e761b3a.png" width="500" />
+</div>
+
+## getData(D1_M1_A1_D2_M2_A2)
+
+O segundo método de impressão consiste em realizar uma busca mais específica (um intervalo de tempo mais preciso), o comando consiste em utilizar o getData(), no entanto é necessário realizar um inserção de tempo desejado, getData(D1_M1_A1_D2_M2_A2) sendo que D significa o dia, M o més e o A o ano, além de que as variáveis acompanhado com o número 1 está relacionado a data inicial de leitura e as variáveis acompanhados por 2 está relacionado a data final de leitura.
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/69599494/233128545-27d77d97-19fb-4789-95f3-64ff5889e3a3.png" width="700" />
+</div>

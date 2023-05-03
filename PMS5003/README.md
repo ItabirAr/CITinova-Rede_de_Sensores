@@ -1,9 +1,18 @@
 # Sensor PMS 5003
 
 <div align="center">
-<img src="" width="500" />
+<img src="https://user-images.githubusercontent.com/69599494/233121421-e74edd3f-a384-4176-8d07-0c6d76be19f8.png" width="500" />
 </div>
 
+Pinos   | Função | Definição
+--------|--------|----------
+PIN 1    | VCC    | Tensão de 5V
+PIN 2    | GND    | Terra
+PIN 3    | SET    | Define a tensão em 3.3V, alto nível ou suspendendo é um status normal de trabalho, enquanto baixo nível é o modo de descanso
+PIN 4   | RX     | Porta serial recebendo dados / 3.3V
+PIN 5   | TX     | Porta serial enviando dados / 3.3V
+PIN 6   | RESET  | Reseta o sinal
+PIN 7/8 | NC     |
 
 ## Descrição do Sensor
 Através do espalhamento de laser dentro do cabine, há uma irradiação nas partículas presentes no interior do sensor (causando assim uma mudança nos feixes do laser em relação a condição inicial). Em seguida, tendo a alteração nos feixes do laser, os dados são coletados. Através do processamento de dados é possível obter a concentração e o tamanho das partículas no ambiente de estudo. 
