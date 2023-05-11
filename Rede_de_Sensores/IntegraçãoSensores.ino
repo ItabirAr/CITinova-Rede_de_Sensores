@@ -152,7 +152,7 @@ void medicaoGY(){
 
 // ** MONITOR SERIAL **
 void monitorSerial() { // função para imprimir  os resultados obtidos
-  for(int j = 0; j < tamanhoBuffer; j++) {
+  for(int j = 0; j < tamanhoBuffer - 1; j++) {
     Serial.print(bufferTempo[j]); //Tempo
     Serial.print(", ");
     Serial.print(bufferTemperaturaBMP[j]); //BMP180
